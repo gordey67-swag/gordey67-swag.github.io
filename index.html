@@ -1,1 +1,305 @@
-﻿<!DOCTYPE html><html><head><meta charset="utf-8"><title>Мой сайт</title></head><body><h1>Привет! Это мой первый сайт</h1></body></html>
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Башня — кафе-бар</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&amp;family=Golos+Text:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#15110e;color:#efe6d8;font-family:'Golos Text',system-ui,sans-serif}
+a{color:#c8a46a}a:hover{color:#e2c48e}
+html{scroll-behavior:smooth}
+@keyframes bn-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes bn-rise{from{opacity:0;transform:translateY(90px)}to{opacity:1;transform:none}}
+@keyframes bn-slide{from{opacity:0;transform:translateX(-120px)}to{opacity:1;transform:none}}
+@keyframes bn-arch{from{opacity:0;transform:scale(.82) translateY(60px)}to{opacity:1;transform:none}}
+@keyframes bn-hero{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.bn-track{display:flex;gap:40px;width:max-content;animation:bn-marquee 38s linear infinite}
+#top h1,#top p,#top [style*="999px 999px 0 0"]{animation:bn-hero 1.2s cubic-bezier(.2,.8,.2,1) both}
+#top p{animation-delay:.2s}
+#top [style*="999px 999px 0 0"]{animation-delay:.35s}
+.k-card{transition:rotate .4s ease,scale .4s ease}
+.k-card:nth-child(odd){rotate:-2deg}
+.k-card:nth-child(even){rotate:2deg;margin-top:56px}
+.k-card:hover{rotate:0deg;scale:1.05}
+@supports (animation-timeline: view()){
+#top{view-timeline-name:--hero}
+#top h1,#top h1 span,#top p,#top [style*="999px 999px 0 0"],#top [style*="grid-template-columns: repeat(4"]{animation-timeline:--hero;animation-range:exit 0% exit 100%;animation-fill-mode:both;animation-timing-function:linear;animation-duration:auto;animation-delay:0s}
+#top h1{animation-name:hx-left}
+#top h1 span{display:inline-block;animation-name:hx-right}
+#top p{animation-name:hx-fade}
+#top [style*="999px 999px 0 0"]{animation-name:hx-arch;transform-origin:50% 100%}
+#top [style*="grid-template-columns: repeat(4"]{animation-name:hx-spread}
+@keyframes hx-left{to{transform:translateX(-45vw) skewX(-8deg);opacity:0}}
+@keyframes hx-right{to{transform:translate(60vw,-10vh) rotate(25deg) scale(1.4)}}
+@keyframes hx-fade{to{opacity:0;transform:translateY(-160px)}}
+@keyframes hx-arch{to{transform:translateY(-30vh) scale(1.7) rotate(-6deg)}}
+@keyframes hx-spread{to{letter-spacing:1.4em;opacity:0}}
+
+section:not(#top) h2{animation:sx-in linear both;animation-timeline:view();animation-range:entry 0% cover 50%}
+section#menu h2,section#visit h2{animation-name:sx-in-r}
+@keyframes sx-in{from{opacity:0;transform:translateX(-50vw) skewX(18deg)}to{opacity:1;transform:none}}
+@keyframes sx-in-r{from{opacity:0;transform:translateX(50vw) skewX(-18deg)}to{opacity:1;transform:none}}
+section:not(#top) p{animation:sx-up linear both;animation-timeline:view();animation-range:entry 0% cover 40%}
+@keyframes sx-up{from{opacity:0;transform:translateY(160px)}to{opacity:1;transform:none}}
+
+section:not(#top) div[style*="letter-spacing: 0.3em"]{animation:sx-kicker linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+@keyframes sx-kicker{from{opacity:0;letter-spacing:1em}to{opacity:1}}
+
+#atmosphere [style*="999px 999px 0 0"]{animation:sx-arch linear both;animation-timeline:view();animation-range:entry 0% cover 60%}
+@keyframes sx-arch{from{clip-path:inset(100% 0 0 0 round 999px 999px 0 0);transform:translateY(200px) scale(1.25)}to{clip-path:inset(0 0 0 0 round 999px 999px 0 0);transform:none}}
+#atmosphere [style*="align-items: baseline; gap: 32px"]{animation:sx-row linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+@keyframes sx-row{from{opacity:0;transform:translateX(40vw)}to{opacity:1;transform:none}}
+
+#menu [style*="padding: 36px 0"]{animation:sx-wipe linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+#menu [style*="padding: 36px 0"]:nth-child(even){animation-range:entry 15% cover 55%}
+@keyframes sx-wipe{from{clip-path:inset(0 100% 0 0);transform:translateY(140px) rotate(3deg);opacity:0}to{clip-path:inset(0 0 0 0);transform:none;opacity:1}}
+
+#evenings [style*="border-radius: 999px;"]{animation:sx-iris linear both;animation-timeline:view();animation-range:entry 0% cover 55%}
+@keyframes sx-iris{from{clip-path:ellipse(0% 0% at 50% 50%);transform:rotate(-45deg) scale(.5)}to{clip-path:ellipse(75% 75% at 50% 50%);transform:none}}
+section#evenings h2{animation-name:sx-spacing}
+@keyframes sx-spacing{from{opacity:0;letter-spacing:.5em}to{opacity:1;letter-spacing:-0.02em}}
+
+#formats [style*="padding: 30px 0"] span:first-child{display:inline-block;animation:sx-num linear both;animation-timeline:view();animation-range:entry 0% cover 30%}
+#formats [style*="padding: 30px 0"] span:nth-child(2){display:inline-block;animation:sx-row linear both;animation-timeline:view();animation-range:entry 0% cover 34%}
+@keyframes sx-num{from{opacity:0;transform:scale(6) rotate(-20deg)}to{opacity:1;transform:none}}
+
+#visit form{animation:sx-form linear both;animation-timeline:view();animation-range:entry 0% cover 45%}
+@keyframes sx-form{from{clip-path:inset(0 0 100% 0);transform:translateY(160px)}to{clip-path:inset(0 0 0 0);transform:none}}
+
+footer > div:first-child{animation:sx-foot linear both;animation-timeline:view();animation-range:entry 0% cover 70%}
+@keyframes sx-foot{from{transform:translateY(100%) scaleY(1.6);opacity:0}to{transform:none;opacity:1}}
+
+#top{--self:var(--accent);--next:#efe6d8}
+#atmosphere{--prev:var(--accent);--self:#efe6d8;--next:#15110e}
+#menu{--prev:#efe6d8;--self:#15110e;--next:#efe6d8}
+#kitchen{--prev:#15110e;--self:#efe6d8;--next:var(--accent)}
+#evenings{--prev:#efe6d8;--self:var(--accent);--next:#efe6d8}
+#formats{--prev:var(--accent);--self:#efe6d8;--next:#15110e}
+#visit{--prev:#efe6d8;--self:#15110e}
+#top{animation:bg-out linear forwards;animation-timeline:view();animation-range:exit-crossing 0% exit-crossing 100%}
+#atmosphere,#menu,#kitchen,#evenings,#formats{animation:bg-in linear both,bg-out linear forwards;animation-timeline:view(),view();animation-range:entry-crossing 0% entry-crossing 100%,exit-crossing 0% exit-crossing 100%}
+#kitchen{overflow-x:hidden !important}
+#kitchen .k-track{animation:k-slide linear both;animation-timeline:view();animation-range:cover 0% cover 100%}
+@keyframes k-slide{from{transform:translateX(30vw)}to{transform:translateX(calc(-100% + 70vw))}}
+#visit{animation:bg-in linear both;animation-timeline:view();animation-range:entry-crossing 0% entry-crossing 100%}
+@keyframes bg-in{from{background-color:var(--prev)}to{background-color:var(--self)}}
+@keyframes bg-out{from{background-color:var(--self)}to{background-color:var(--next)}}
+}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}html{scroll-behavior:auto}}
+
+@media (max-width: 820px){
+section[id]{padding:72px 20px !important;display:flex !important;flex-direction:column !important;row-gap:36px !important;gap:36px !important}
+#top{padding:0 20px 36px !important;gap:0 !important}
+#kitchen{padding:72px 0 !important}
+section[id] h2{font-size:52px !important;line-height:1.02 !important}
+section[id] > div,section[id] > h2,section[id] > form{grid-column:auto !important}
+
+#top header{display:flex !important;justify-content:space-between !important;height:72px !important}
+#top header nav,#top header a[href^="tel"]{display:none !important}
+#top header a[href="#visit"]{padding:12px 18px !important;font-size:12px !important}
+#top > div[style*="repeat(12"]{display:flex !important;flex-direction:column !important;gap:36px !important;padding-top:36px !important}
+#top h1{font-size:31vw !important}
+#top p{font-size:22px !important}
+#top div[style*="gap: 14px"]{flex-wrap:wrap !important}
+#top div[style*="gap: 14px"] a{padding:16px 24px !important;font-size:13px !important}
+#top div[style*="height: 620px"]{height:440px !important}
+#top > div[style*="repeat(4"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;margin-top:36px !important;row-gap:14px !important;font-size:12px !important}
+#top > div[style*="repeat(4"] span{justify-self:start !important}
+div.bn-track{font-size:22px}
+div[aria-hidden="true"][style*="padding: 22px 0"]{padding:14px 0 !important}
+
+#atmosphere div[style*="height: 440px"]{height:380px !important;width:100% !important}
+#atmosphere div[style*="gap: 32px"]{flex-direction:column !important;gap:8px !important;padding:22px 0 !important}
+#atmosphere div[style*="gap: 32px"] span:first-child{min-width:0 !important;font-size:34px !important}
+
+#menu > div[style*="space-between"]{flex-direction:column !important;align-items:flex-start !important;gap:24px !important}
+#menu > div[style*="repeat(2"]{grid-template-columns:1fr !important;column-gap:0 !important}
+#menu div[style*="padding: 36px 0"]{padding:24px 0 !important;border-bottom:none !important}
+#menu > div[style*="repeat(2"] > div:last-child{border-bottom:1px solid #3a3029 !important}
+#menu div[style*="padding: 36px 0"] span[style*="font-size: 40px"]{font-size:32px !important}
+
+#kitchen > div{display:block !important;padding:0 20px !important}
+#kitchen > div > div{margin-bottom:16px}
+#kitchen .k-track{padding:20px !important;gap:18px !important}
+#kitchen .k-card{width:220px !important}
+#kitchen .k-card > div{height:290px !important}
+#kitchen .k-card figcaption{font-size:22px !important}
+#kitchen .k-card:nth-child(even){margin-top:36px}
+
+#evenings > div[style*="height: 520px"]{height:360px !important;width:100% !important}
+#evenings p{font-size:17px !important}
+
+#formats div[style*="padding: 30px 0"]{grid-template-columns:44px 1fr !important;row-gap:6px !important;padding:22px 0 !important}
+#formats div[style*="padding: 30px 0"] > span{grid-column:auto !important}
+#formats div[style*="padding: 30px 0"] > span:nth-child(2){font-size:30px !important}
+#formats div[style*="padding: 30px 0"] > span:nth-child(3){grid-column:2 !important}
+#formats > div[style*="repeat(4"]{grid-template-columns:repeat(2,minmax(0,1fr)) !important;row-gap:24px !important}
+
+#visit > div[style*="span 6"]{gap:32px !important}
+#visit div[style*="repeat(2"]{grid-template-columns:1fr !important;gap:22px !important}
+#visit form{padding:26px 20px !important;align-self:stretch !important}
+#visit form div[style*="repeat(3"]{grid-template-columns:1fr 1fr !important}
+#visit form div[style*="repeat(3"] label:last-child{grid-column:1 / -1}
+#visit > div.v-map{height:300px !important;width:100% !important}
+
+footer{padding:0 20px 32px !important}
+footer > div:first-child{font-size:34vw !important}
+footer > div:last-child{flex-direction:column !important;gap:8px !important}
+}
+</style>
+</head>
+<body>
+<div style="--accent: #5b1a18; width: 100%; min-height: 100vh; display: flex; flex-direction: column; background: #efe6d8; color: #15110e; font-family: 'Golos Text', system-ui, sans-serif; overflow-x: clip">
+
+<section id="top" style="position: relative; box-sizing: border-box; padding: 0 64px 56px; display: flex; flex-direction: column; background: #5b1a18; color: #efe6d8; overflow: hidden">
+<header style="height: 104px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: center; border-bottom: 1px solid rgba(239,230,216,0.22)">
+<nav aria-label="Разделы" style="display: flex; gap: 32px; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase">
+<a href="#menu" style="color: #efe6d8; text-decoration: none">Меню</a>
+<a href="#evenings" style="color: #efe6d8; text-decoration: none">Вечера</a>
+<a href="#visit" style="color: #efe6d8; text-decoration: none">Контакты</a>
+</nav>
+<a href="#top" style="justify-self: center; color: #efe6d8; text-decoration: none; font-family: 'Playfair Display', Georgia, serif; font-size: 22px; letter-spacing: 0.5em; padding-left: 0.5em">БАШНЯ</a>
+<div style="justify-self: end; display: flex; align-items: center; gap: 28px">
+<a href="tel:+79262082000" style="color: #efe6d8; text-decoration: none; font-size: 15px; white-space: nowrap">+7 (926) 208-20-00</a>
+<a href="#visit" style="padding: 14px 26px; border: 1px solid #c8a46a; border-radius: 999px; color: #efe6d8; text-decoration: none; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase">Забронировать</a>
+</div>
+</header>
+
+<div style="display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end; padding-top: 72px">
+<div style="grid-column: span 7; display: flex; flex-direction: column; gap: 40px; padding-bottom: 24px">
+<div style="display: flex; align-items: center; gap: 16px; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: #c8a46a">
+<span style="display: block; width: 56px; height: 1px; background: #c8a46a"></span>Ресторан · Реутов
+</div>
+<h1 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 210px; line-height: 0.82; letter-spacing: -0.03em">Баш<span style="font-style: italic; color: #c8a46a">ня</span></h1>
+<p style="margin: 0; max-width: 560px; font-family: 'Playfair Display', Georgia, serif; font-size: 30px; line-height: 1.3; font-style: italic">Кофе и десерты днём. Вино, коктейли и живая музыка — вечером.</p>
+<div style="display: flex; gap: 14px">
+<a href="#visit" style="padding: 20px 34px; border-radius: 999px; background: #efe6d8; color: #15110e; text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Забронировать стол</a>
+<a href="#formats" style="padding: 19px 33px; border-radius: 999px; border: 1px solid rgba(239,230,216,0.5); color: #efe6d8; text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Доставка</a>
+</div>
+</div>
+<div style="grid-column: span 5; display: flex; flex-direction: column; gap: 16px">
+<div style="height: 620px; border-radius: 999px 999px 0 0; background: #2b0d0b; border: 1px solid #c8a46a; overflow: hidden; box-sizing: border-box">
+<img src="images/facade.jpg" alt="Фасад ресторана Башня вечером, с гирляндами и вывеской" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%">
+</div>
+</div>
+</div>
+
+<div style="margin-top: 56px; padding-top: 28px; border-top: 1px solid rgba(239,230,216,0.22); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: #e3d4bd">
+<span>Обед</span><span>Ужин</span><span>Ужин в одиночестве</span><span style="justify-self: end">Для компаний</span>
+</div>
+</section>
+
+<div aria-hidden="true" style="background: #c8a46a; color: #15110e; padding: 22px 0; overflow: hidden; white-space: nowrap; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 30px; display: flex; gap: 40px; justify-content: flex-start">
+<div class="bn-track"><span>отличный кофе</span><span>—</span><span>десерты</span><span>—</span><span>большой выбор чая</span><span>—</span><span>вино</span><span>—</span><span>коктейли</span><span>—</span><span>живая музыка</span><span>—</span><span>отличный кофе</span><span>—</span><span>десерты</span><span>—</span><span>большой выбор чая</span><span>—</span><span>вино</span><span>—</span><span>коктейли</span><span>—</span><span>живая музыка</span><span>—</span></div>
+</div>
+
+<section id="atmosphere" style="box-sizing: border-box; padding: 140px 64px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 72px">
+<div style="grid-column: span 2; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: #5b1a18">01 — Атмосфера</div>
+<h2 style="grid-column: span 10; margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 96px; line-height: 1; letter-spacing: -0.02em">Здесь не нужно <span style="font-style: italic; color: #5b1a18">торопиться</span> и перекрикивать соседей.</h2>
+<div style="grid-column: 3 / span 3; height: 440px; border-radius: 999px 999px 0 0; background: #ddd0bb; overflow: hidden"><img src="images/banquet.jpg" alt="Зал Башни, накрытый банкетный стол" style="display: block; width: 100%; height: 100%; object-fit: cover"></div>
+<div style="grid-column: 7 / span 6; display: flex; flex-direction: column; justify-content: flex-end">
+<div style="padding: 28px 0; border-top: 1px solid #c9b9a1; display: flex; align-items: baseline; gap: 32px"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 44px; min-width: 260px">Уютно</span><span style="font-size: 17px; line-height: 1.6; color: #4d4238">Тёплый свет и мягкие места, в которых хочется задержаться.</span></div>
+<div style="padding: 28px 0; border-top: 1px solid #c9b9a1; display: flex; align-items: baseline; gap: 32px"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 44px; min-width: 260px">Тихо</span><span style="font-size: 17px; line-height: 1.6; color: #4d4238">Можно поговорить, почитать или поработать за чашкой кофе.</span></div>
+<div style="padding: 28px 0; border-top: 1px solid #c9b9a1; border-bottom: 1px solid #c9b9a1; display: flex; align-items: baseline; gap: 32px"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 44px; min-width: 260px">Просто</span><span style="font-size: 17px; line-height: 1.6; color: #4d4238">Без дресс-кода и церемоний. Ужин в одиночестве здесь в порядке вещей.</span></div>
+</div>
+</section>
+
+<section id="menu" style="box-sizing: border-box; padding: 140px 64px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 72px; background: #15110e; color: #efe6d8">
+<div style="grid-column: span 2; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: #c8a46a">02 — Меню</div>
+<div style="grid-column: span 10; display: flex; justify-content: space-between; align-items: flex-end; gap: 48px">
+<h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 96px; line-height: 1; letter-spacing: -0.02em">Что <span style="font-style: italic; color: #c8a46a">в карте</span></h2>
+<a href="menu.html" style="padding: 18px 30px; border-radius: 999px; border: 1px solid #c8a46a; color: #efe6d8; text-decoration: none; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap">Полное меню →</a>
+</div>
+<div style="grid-column: 3 / span 10; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 80px">
+<div style="padding: 36px 0; border-top: 1px solid #3a3029; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px">Кофе</span><span style="font-size: 13px; letter-spacing: 0.2em; color: #c8a46a">I</span></div><span style="font-size: 17px; line-height: 1.6; color: #b9ab98">Гости хвалят его отдельно. Классика и авторские напитки.</span></div>
+<div style="padding: 36px 0; border-top: 1px solid #3a3029; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px">Десерты</span><span style="font-size: 13px; letter-spacing: 0.2em; color: #c8a46a">II</span></div><span style="font-size: 17px; line-height: 1.6; color: #b9ab98">Ради них стоит оставить место после ужина.</span></div>
+<div style="padding: 36px 0; border-top: 1px solid #3a3029; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px">Чай</span><span style="font-size: 13px; letter-spacing: 0.2em; color: #c8a46a">III</span></div><span style="font-size: 17px; line-height: 1.6; color: #b9ab98">Большой выбор сортов, чтобы каждый нашёл свой.</span></div>
+<div style="padding: 36px 0; border-top: 1px solid #3a3029; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px">Маленькие тарелки</span><span style="font-size: 13px; letter-spacing: 0.2em; color: #c8a46a">IV</span></div><span style="font-size: 17px; line-height: 1.6; color: #b9ab98">Закуски и перекусы, которые удобно делить на компанию.</span></div>
+<div style="padding: 36px 0; border-top: 1px solid #3a3029; border-bottom: 1px solid #3a3029; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px">Вино и пиво</span><span style="font-size: 13px; letter-spacing: 0.2em; color: #c8a46a">V</span></div><span style="font-size: 17px; line-height: 1.6; color: #b9ab98">К ужину или просто к хорошему разговору.</span></div>
+<div style="padding: 36px 0; border-top: 1px solid #3a3029; border-bottom: 1px solid #3a3029; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; justify-content: space-between; align-items: baseline"><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px">Бар</span><span style="font-size: 13px; letter-spacing: 0.2em; color: #c8a46a">VI</span></div><span style="font-size: 17px; line-height: 1.6; color: #b9ab98">Коктейли и крепкий алкоголь.</span></div>
+</div>
+</section>
+
+<section id="kitchen" style="box-sizing: border-box; padding: 140px 0; display: flex; flex-direction: column; gap: 72px; background: #efe6d8; color: #15110e; overflow-x: auto">
+<div style="padding: 0 64px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px">
+<div style="grid-column: span 2; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: #5b1a18">Кухня</div>
+<h2 style="grid-column: span 10; margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 96px; line-height: 1; letter-spacing: -0.02em">Из нашей <span style="font-style: italic; color: #5b1a18">кухни</span></h2>
+</div>
+<div class="k-track" style="display: flex; gap: 28px; width: max-content; padding: 20px 64px">
+<figure class="k-card" style="margin: 0; width: 280px; display: flex; flex-direction: column; gap: 16px"><div style="height: 364px; border-radius: 999px 999px 12px 12px; overflow: hidden; background: #ddd0bb"><img src="images/shashlik.jpg" alt="Шашлык с овощами и соусом" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><figcaption style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px">Шашлык</figcaption></figure>
+<figure class="k-card" style="margin: 0; width: 280px; display: flex; flex-direction: column; gap: 16px"><div style="height: 364px; border-radius: 999px 999px 12px 12px; overflow: hidden; background: #ddd0bb"><img src="images/khachapuri.jpg" alt="Хачапури по-аджарски с яйцом" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><figcaption style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px">Хачапури по-аджарски</figcaption></figure>
+<figure class="k-card" style="margin: 0; width: 280px; display: flex; flex-direction: column; gap: 16px"><div style="height: 364px; border-radius: 999px 999px 12px 12px; overflow: hidden; background: #ddd0bb"><img src="images/khinkali.jpg" alt="Хинкали на тарелке" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><figcaption style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px">Хинкали</figcaption></figure>
+<figure class="k-card" style="margin: 0; width: 280px; display: flex; flex-direction: column; gap: 16px"><div style="height: 364px; border-radius: 999px 999px 12px 12px; overflow: hidden; background: #ddd0bb"><img src="images/potatoes.jpg" alt="Картофель по-деревенски с мясом и соусом" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><figcaption style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px">Картофель по-деревенски</figcaption></figure>
+<figure class="k-card" style="margin: 0; width: 280px; display: flex; flex-direction: column; gap: 16px"><div style="height: 364px; border-radius: 999px 999px 12px 12px; overflow: hidden; background: #ddd0bb"><img src="images/salad2.jpg" alt="Салат из свежих овощей" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><figcaption style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px">Овощной салат</figcaption></figure>
+<figure class="k-card" style="margin: 0; width: 280px; display: flex; flex-direction: column; gap: 16px"><div style="height: 364px; border-radius: 999px 999px 12px 12px; overflow: hidden; background: #ddd0bb"><img src="images/shrimp.jpg" alt="Салат с креветками и сыром" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><figcaption style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px">Салат с креветками</figcaption></figure>
+<figure class="k-card" style="margin: 0; width: 280px; display: flex; flex-direction: column; gap: 16px"><div style="height: 364px; border-radius: 999px 999px 12px 12px; overflow: hidden; background: #ddd0bb"><img src="images/salad1.jpg" alt="Огурцы, помидоры и красный лук" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><figcaption style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px">Свежие овощи</figcaption></figure>
+<figure class="k-card" style="margin: 0; width: 280px; display: flex; flex-direction: column; gap: 16px"><div style="height: 364px; border-radius: 999px 999px 12px 12px; overflow: hidden; background: #ddd0bb"><img src="images/watermelon.jpg" alt="Нарезанный арбуз в корзине из корки" style="display: block; width: 100%; height: 100%; object-fit: cover"></div><figcaption style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px">Арбуз к столу</figcaption></figure>
+</div>
+</section>
+
+<section id="evenings" style="box-sizing: border-box; padding: 140px 64px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center; background: #5b1a18; color: #efe6d8">
+<div style="grid-column: span 5; height: 520px; border-radius: 999px; background: #2b0d0b; border: 1px solid #c8a46a; display: flex; align-items: center; justify-content: center"><span style="font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: #c8a46a">[фото музыкантов]</span></div>
+<div style="grid-column: 7 / span 6; display: flex; flex-direction: column; gap: 32px">
+<div style="font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: #c8a46a">03 — Вечера</div>
+<h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 88px; line-height: 1; letter-spacing: -0.02em">Живая <span style="font-style: italic; color: #c8a46a">музыка</span></h2>
+<p style="margin: 0; max-width: 520px; font-size: 19px; line-height: 1.65; color: #e3d4bd">По вечерам у нас играют музыканты: негромко, так что разговору не мешает. Бокал вина, маленькие тарелки и хороший звук.</p>
+<p style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 28px">[дни и время концертов]</p>
+</div>
+</section>
+
+<section id="formats" style="box-sizing: border-box; padding: 140px 64px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 64px">
+<div style="grid-column: span 2; font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: #5b1a18">04 — Форматы</div>
+<h2 style="grid-column: span 10; margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 96px; line-height: 1; letter-spacing: -0.02em">Как вам <span style="font-style: italic; color: #5b1a18">удобно</span></h2>
+<div style="grid-column: 3 / span 10; display: flex; flex-direction: column">
+<div style="padding: 30px 0; border-top: 1px solid #c9b9a1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: baseline"><span style="grid-column: span 1; font-size: 14px; color: #5b1a18">01</span><span style="grid-column: span 5; font-family: 'Playfair Display', Georgia, serif; font-size: 40px">В зале</span><span style="grid-column: span 6; font-size: 17px; color: #4d4238">Обед и ужин с обслуживанием за столиком</span></div>
+<div style="padding: 30px 0; border-top: 1px solid #c9b9a1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: baseline"><span style="grid-column: span 1; font-size: 14px; color: #5b1a18">02</span><span style="grid-column: span 5; font-family: 'Playfair Display', Georgia, serif; font-size: 40px">На веранде</span><span style="grid-column: span 6; font-size: 17px; color: #4d4238">Столики на открытом воздухе</span></div>
+<div style="padding: 30px 0; border-top: 1px solid #c9b9a1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: baseline"><span style="grid-column: span 1; font-size: 14px; color: #5b1a18">03</span><span style="grid-column: span 5; font-family: 'Playfair Display', Georgia, serif; font-size: 40px">С собой</span><span style="grid-column: span 6; font-size: 17px; color: #4d4238">Кофе, десерты и еда на вынос</span></div>
+<div style="padding: 30px 0; border-top: 1px solid #c9b9a1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: baseline"><span style="grid-column: span 1; font-size: 14px; color: #5b1a18">04</span><span style="grid-column: span 5; font-family: 'Playfair Display', Georgia, serif; font-size: 40px">Доставка</span><span style="grid-column: span 6; font-size: 17px; color: #4d4238">Привезём домой или в офис · <a href="[ССЫЛКА НА ДОСТАВКУ]" style="color: #5b1a18">заказать</a></span></div>
+<div style="padding: 30px 0; border-top: 1px solid #c9b9a1; border-bottom: 1px solid #c9b9a1; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: baseline"><span style="grid-column: span 1; font-size: 14px; color: #5b1a18">05</span><span style="grid-column: span 5; font-family: 'Playfair Display', Georgia, serif; font-size: 40px">Предзаказ</span><span style="grid-column: span 6; font-size: 17px; color: #4d4238">Приготовим к вашему приходу</span></div>
+</div>
+<div style="grid-column: 3 / span 10; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-top: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #6b5c4b">Доступность</span><span style="font-size: 17px">Вход с пандусом</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #6b5c4b">Дети</span><span style="font-size: 17px">Стульчики для кормления</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #6b5c4b">Парковка</span><span style="font-size: 17px">Бесплатная, на улице</span></div>
+<div style="display: flex; flex-direction: column; gap: 6px"><span style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #6b5c4b">Оплата</span><span style="font-size: 17px">Карты и NFC</span></div>
+</div>
+</section>
+
+<section id="visit" style="box-sizing: border-box; padding: 140px 64px 96px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; row-gap: 80px; background: #15110e; color: #efe6d8">
+<div style="grid-column: span 6; display: flex; flex-direction: column; gap: 48px">
+<div style="font-size: 13px; letter-spacing: 0.3em; text-transform: uppercase; color: #c8a46a">05 — Приходите</div>
+<h2 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 96px; line-height: 1; letter-spacing: -0.02em">Ждём <span style="font-style: italic; color: #c8a46a">в гости</span></h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px">
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #9c8e7b">Адрес</span><a href="https://yandex.ru/maps/?text=%D0%A0%D0%B5%D1%83%D1%82%D0%BE%D0%B2%2C%20%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2014%D0%92" style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: #efe6d8; text-decoration: none">Реутов,<br>Советская ул., 14В</a></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #9c8e7b">Часы</span><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px">Ежедневно<br>11:00–23:00</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #9c8e7b">Телефон</span><span style="display: flex; flex-direction: column; gap: 4px"><a href="tel:+79262082000" style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: #efe6d8; text-decoration: none; white-space: nowrap">+7 (926) 208-20-00</a><a href="tel:+74955280160" style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; color: #efe6d8; text-decoration: none; white-space: nowrap">+7 (495) 528-01-60</a></span></div>
+<div style="display: flex; flex-direction: column; gap: 8px"><span style="font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: #9c8e7b">Мы в сети</span><span style="display: flex; gap: 20px; font-size: 17px"><a href="[ССЫЛКА ВКОНТАКТЕ]">ВКонтакте</a><a href="[ССЫЛКА TELEGRAM]">Telegram</a></span></div>
+</div>
+</div>
+<form aria-label="Бронирование столика" style="grid-column: 8 / span 5; align-self: end; padding: 44px; border: 1px solid #c8a46a; border-radius: 4px; display: flex; flex-direction: column; gap: 22px">
+<h3 style="margin: 0; font-family: 'Playfair Display', Georgia, serif; font-weight: 400; font-size: 40px">Бронь стола</h3>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #b9ab98">Имя<input type="text" name="name" autocomplete="name" style="height: 48px; padding: 0; border: none; border-bottom: 1px solid #5a4d42; background: transparent; color: #efe6d8; font: inherit; font-size: 18px; letter-spacing: 0; text-transform: none"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #b9ab98">Телефон<input type="tel" name="phone" autocomplete="tel" style="height: 48px; padding: 0; border: none; border-bottom: 1px solid #5a4d42; background: transparent; color: #efe6d8; font: inherit; font-size: 18px; letter-spacing: 0; text-transform: none"></label>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #b9ab98">Дата<input type="date" name="date" style="height: 48px; padding: 0; border: none; border-bottom: 1px solid #5a4d42; background: transparent; color: #efe6d8; font: inherit; font-size: 16px; letter-spacing: 0; color-scheme: dark"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #b9ab98">Время<input type="time" name="time" style="height: 48px; padding: 0; border: none; border-bottom: 1px solid #5a4d42; background: transparent; color: #efe6d8; font: inherit; font-size: 16px; letter-spacing: 0; color-scheme: dark"></label>
+<label style="display: flex; flex-direction: column; gap: 8px; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: #b9ab98">Гостей<input type="number" name="guests" min="1" value="2" style="height: 48px; padding: 0; border: none; border-bottom: 1px solid #5a4d42; background: transparent; color: #efe6d8; font: inherit; font-size: 16px; letter-spacing: 0; color-scheme: dark"></label>
+</div>
+<button type="button" style="height: 60px; margin-top: 12px; border: none; border-radius: 999px; background: #c8a46a; color: #15110e; font: inherit; font-size: 15px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer">Отправить заявку</button>
+</form>
+<div class="v-map" style="grid-column: span 12; height: 360px; position: relative; overflow: hidden; border-radius: 4px; background-color: #221b16; background-image: linear-gradient(28deg, transparent 47%, #3a3029 47%, #3a3029 49.5%, transparent 49.5%), linear-gradient(-62deg, transparent 58%, #2e2620 58%, #2e2620 60%, transparent 60%), linear-gradient(90deg, transparent 33%, #2e2620 33%, #2e2620 34%, transparent 34%), linear-gradient(0deg, transparent 64%, #2e2620 64%, #2e2620 65.2%, transparent 65.2%); display: flex; align-items: center; justify-content: center"><div style="display: flex; flex-direction: column; align-items: center; gap: 22px; text-align: center; padding: 24px"><svg width="54" height="70" viewBox="0 0 24 32" aria-hidden="true"><path d="M12 1C6 1 1.5 5.5 1.5 11.3 1.5 19 12 31 12 31s10.5-12 10.5-19.7C22.5 5.5 18 1 12 1z" fill="#c8a46a"></path><circle cx="12" cy="11.5" r="4" fill="#15110e"></circle></svg><span style="font-family: 'Playfair Display', Georgia, serif; font-size: 34px; color: #efe6d8">Советская ул., 14В</span><span style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px"><a href="https://yandex.ru/maps/?text=%D0%A0%D0%B5%D1%83%D1%82%D0%BE%D0%B2%2C%20%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2014%D0%92" target="_blank" rel="noopener" style="padding: 16px 26px; border-radius: 999px; background: #c8a46a; color: #15110e; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">Открыть на карте</a><a href="https://yandex.ru/maps/?rtext=~%D0%A0%D0%B5%D1%83%D1%82%D0%BE%D0%B2%2C%20%D0%A1%D0%BE%D0%B2%D0%B5%D1%82%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0%2C%2014%D0%92&amp;rtt=auto" target="_blank" rel="noopener" style="padding: 15px 25px; border-radius: 999px; border: 1px solid #c8a46a; color: #efe6d8; text-decoration: none; font-size: 14px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase">Построить маршрут</a></span></div></div>
+</section>
+
+<footer style="flex-grow: 1; box-sizing: border-box; padding: 0 64px 48px; display: flex; flex-direction: column; gap: 32px; background: #15110e; color: #9c8e7b; overflow: hidden">
+<div style="font-family: 'Playfair Display', Georgia, serif; font-size: 300px; line-height: 0.8; letter-spacing: -0.04em; color: #efe6d8">Баш<span style="font-style: italic; color: #c8a46a">ня</span></div>
+<div style="display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid #3a3029; font-size: 14px">
+<span>Ресторан «Башня» · кухня, бар, живая музыка</span>
+<span>Реутов, Советская ул., 14В · ежедневно 11:00–23:00</span>
+</div>
+</footer>
+
+</div>
+</body>
+</html>
